@@ -4,4 +4,4 @@ env/
 # frontend/static/frontend/
 # *.sqlite3
 static/
-webpack-stats.json
+# webpack-stats.json

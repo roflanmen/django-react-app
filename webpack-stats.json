@@ -1,0 +1,21 @@
+{
+  "status": "done",
+  "assets": {
+    "frontend-c455ee2bcf54a227a3f9.js": {
+      "name": "frontend-c455ee2bcf54a227a3f9.js",
+      "path": "/home/roflanmen/django-test/django-react-app/frontend/static/frontend/frontend-c455ee2bcf54a227a3f9.js",
+      "publicPath": "static/frontend/frontend-c455ee2bcf54a227a3f9.js"
+    },
+    "frontend-c455ee2bcf54a227a3f9.js.LICENSE.txt": {
+      "name": "frontend-c455ee2bcf54a227a3f9.js.LICENSE.txt",
+      "path": "/home/roflanmen/django-test/django-react-app/frontend/static/frontend/frontend-c455ee2bcf54a227a3f9.js.LICENSE.txt",
+      "publicPath": "static/frontend/frontend-c455ee2bcf54a227a3f9.js.LICENSE.txt"
+    }
+  },
+  "chunks": {
+    "frontend": [
+      "frontend-c455ee2bcf54a227a3f9.js"
+    ]
+  },
+  "publicPath": "static/frontend/"
+}
