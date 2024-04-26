@@ -32,15 +32,18 @@ ALLOWED_HOSTS = ["*"]
 # Application definition
 
 INSTALLED_APPS = [
-    "webpack_loader",
-    "frontend",
-    "api",
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+
+    "rest_framework",
+
+    "webpack_loader",
+    "frontend",
+    "api",
 ]
 
 WEBPACK_LOADER = {"DEFAULT": {"BUNDLE_DIR_NAME": "frontend/", "STATS_FILE": os.path.join(BASE_DIR, "webpack-stats.json")}}
@@ -79,6 +82,12 @@ WSGI_APPLICATION = "backend.wsgi.application"
 
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
+
+REST_FRAMEWORK = {
+    "DEFAULT_AUTHENTICATION_CLASSES": [
+        "rest_framework_simplejwt.authentication.JWTAuthentication",
+    ],
+}
 
 DATABASES = {
     "default": {
