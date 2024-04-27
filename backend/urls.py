@@ -26,11 +26,15 @@ urlpatterns = [
     path("admin/", admin.site.urls),
     path("api-auth/", include("rest_framework.urls", namespace="rest_framework")),
     path("", include("frontend.urls")),
-
-    path("api/", include([
-        path('', include('user.urls')),
-        path("", include("api.urls")),
-        path("user/login/", TokenObtainPairView.as_view(), name="token_obtain_pair"),
-        path("user/login/refresh/", TokenRefreshView.as_view(), name="token_refresh"),
-    ])),
+    path(
+        "api/",
+        include(
+            [
+                path("", include("user.urls")),
+                path("", include("ads.urls")),
+                path("user/login/", TokenObtainPairView.as_view(), name="token_obtain_pair"),
+                path("user/login/refresh/", TokenRefreshView.as_view(), name="token_refresh"),
+            ]
+        ),
+    ),
 ]

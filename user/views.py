@@ -2,22 +2,24 @@ from rest_framework.permissions import AllowAny
 from rest_framework.decorators import action
 from rest_framework.response import Response
 from rest_framework.request import Request
-from rest_framework.viewsets import GenericViewSet
+from rest_framework.viewsets import ModelViewSet
 from rest_framework_simplejwt.tokens import RefreshToken
+from rest_framework.exceptions import PermissionDenied
+from .models import Profile
 from rest_framework import status
 
-from django.contrib.auth.models import User
-from .serializers import RegistrationSerializer
+from .serializers import RegistrationSerializer, UserRetrieveSerializer
 
 
-class UserViewSet(GenericViewSet):
-    serializer_class = RegistrationSerializer
+class UserViewSet(ModelViewSet):
+    serializer_class = UserRetrieveSerializer
+    queryset = Profile.objects.all()
 
     @action(
         methods=["post"], url_path="create", detail=False, permission_classes=[AllowAny]
     )
     def registration(self, request: Request):
-        serializer = self.get_serializer(data=request.data)
+        serializer = RegistrationSerializer(data=request.data)
         serializer.is_valid(raise_exception=True)
         user = serializer.save()
         refresh = RefreshToken.for_user(user)
@@ -29,3 +31,22 @@ class UserViewSet(GenericViewSet):
             },
             status=status.HTTP_201_CREATED,
         )
+
+    @action(methods=["get"], url_path="info", detail=True, permission_classes=[AllowAny])
+    def info(self, request, pk=None):
+        user = Profile.objects.get(pk=pk)
+        serializer = UserRetrieveSerializer(user)
+        return Response(serializer.data)
+
+    def list(self, request):
+        queryset = Profile.objects.all()
+        serializer = UserRetrieveSerializer(queryset, many=True)
+        return Response(serializer.data, status=status.HTTP_200_OK)
+
+    def update(self, request, *args, **kwargs):
+        user = self.get_object()
+
+        if request.user.id != user.id:
+            raise PermissionDenied("You do not have permission to edit this user.")
+
+        return super().update(request, *args, **kwargs, partial=True)
