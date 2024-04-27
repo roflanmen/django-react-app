@@ -32,12 +32,6 @@ class UserViewSet(ModelViewSet):
             status=status.HTTP_201_CREATED,
         )
 
-    @action(methods=["get"], url_path="info", detail=True, permission_classes=[AllowAny])
-    def info(self, request, pk=None):
-        user = Profile.objects.get(pk=pk)
-        serializer = UserRetrieveSerializer(user)
-        return Response(serializer.data)
-
     def list(self, request):
         queryset = Profile.objects.all()
         serializer = UserRetrieveSerializer(queryset, many=True)
