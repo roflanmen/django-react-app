@@ -30,6 +30,9 @@ DEBUG = True
 
 ALLOWED_HOSTS = ["*"]
 
+# CORS settings
+CORS_ALLOW_ALL_ORIGINS = True
+
 
 # Application definition
 
@@ -40,6 +43,7 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+    'corsheaders',
     "rest_framework",
     "drf_spectacular",
     "webpack_loader",
@@ -56,6 +60,7 @@ WEBPACK_LOADER = {"DEFAULT": {"BUNDLE_DIR_NAME": "frontend/", "STATS_FILE": os.p
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
+    'corsheaders.middleware.CorsMiddleware',
     "django.middleware.common.CommonMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
     "django.contrib.auth.middleware.AuthenticationMiddleware",
