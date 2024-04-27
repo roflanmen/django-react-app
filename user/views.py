@@ -12,7 +12,7 @@ from .serializers import RegistrationSerializer, UserRetrieveSerializer
 
 
 class UserViewSet(ModelViewSet):
-    serializer_class = UserRetrieveSerializer
+    serializer_class = RegistrationSerializer
     queryset = Profile.objects.all()
 
     @action(
