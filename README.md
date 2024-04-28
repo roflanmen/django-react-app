@@ -1,13 +1,14 @@
 # Test task for BEST Hackath0n
-> Team name: based
+> Team name: based, Project name: Needz
 
 This repository contains all of the source code for our web app.
 
 ## Web App
-The app itself is hosted on Heroku. You can access it [here](https://based-app.pp.ua/).
+App is hosted on vercel, you can look at it [here](https://hackathonapp-olive.vercel.app/)
+App's backend(API) is hosted on Heroku. You can access it [here](http://based-app.pp.ua/).
 
 ## API Documentation
-You can find the documentation for our app's API [here](https://www.based-app.pp.ua/api/docs/).
+You can find the documentation for our app's API [here](http://www.based-app.pp.ua/api/docs/).
 
 ## Stack
 Needz was built using React + Django, backend uses SQLite as database, but it's easily replaceable. It uses specific deploy config, written primarily for Heroku to enable continuous CI/CD. App deploys on push to the main branch of this repo.
