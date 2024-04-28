@@ -1,10 +1,11 @@
 # Test task for BEST Hackath0n
 > Team name: based, Project name: Needz
 
-This repository contains all of the source code for our web app.
+This repository contains all of the source code for our web app's backend.
 
 ## Web App
-App is hosted on vercel, you can look at it [here](https://hackathonapp-olive.vercel.app/)
+App's frontend is hosted on vercel, you can look at it [here](https://hackathonapp-olive.vercel.app/).  
+Frontend code is [here](https://github.com/VyacheslavKolos/hackathonapp)  
 App's backend(API) is hosted on Heroku. You can access it [here](http://based-app.pp.ua/).
 
 ## API Documentation
